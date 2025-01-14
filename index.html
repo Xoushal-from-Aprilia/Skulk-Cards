@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SKULK CARD</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="wrapper">
+    <h1>SKULK CARDS</h1>
+    <!-- Pulsante per aprire un pacchetto -->
+    <button id="open-pack" class="button">Apri un Pacchetto</button>
+    <div class="pack-container" id="pack-container"></div>
+    
+    <!-- Pulsante per aprire l'inventario -->
+    <button id="open-inventory" class="button">Apri Inventario</button>
+  </div>
+
+  <!-- Pop-up per l'inventario -->
+<div id="inventory-popup" class="popup hidden">
+  <div class="popup-content">
+    <button id="close-inventory" class="close-btn">Chiudi</button>
+    <h2>Inventario</h2>
+    <!-- Griglia dell'inventario -->
+    <div id="inventory" class="inventory-grid"></div>
+    <button id="delete-selected" class="delete-btn" disabled>Elimina Carte</button>
+  </div>
+</div>
+
+<div class="bottom-bar">
+  <button id="empty-button" onclick="console.log('Vuoto')">⬜</button>
+  <button id="inventory-button" onclick="openInventory()">🎒</button>
+  <button id="home-button" onclick="goHome()">🏠</button>
+</div>
+
+  <script src="script.js"></script>
+</body>
+</html>

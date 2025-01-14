@@ -1,0 +1,284 @@
+/* Stile base */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  color: white;
+}
+
+/* Layout wrapper */
+
+
+/* Pulsanti */
+.button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  color: white;
+  background: #2575fc;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.button:hover {
+  background: #6a11cb;
+}
+
+/* Contenitori */
+.pack-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 13px;
+  margin-top: 20px;
+  
+  margin-bottom: 10px;
+  align-items: center;
+ justify-content: center; 
+}
+
+/* Griglia dell'inventario */
+/* Griglia dell'inventario */
+.inventory-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(90px, 1fr)); /* Colonne responsive */
+  gap: 15px;
+  justify-content: center; /* Allinea al centro orizzontalmente */
+  align-items: center; /* Allinea al centro verticalmente */
+  margin-top: 20px;
+  width: 100%;
+  max-width: 600px; /* Limita la larghezza */
+}
+
+/* Carta */
+.card {
+
+  position: relative; /* Necessario per il posizionamento assoluto di `.card-image` */
+  overflow: hidden; /* Assicura che l'immagine non esca dai bordi della carta */
+
+  
+  background: linear-gradient(135deg, #f3f3f3, #e0e0e0);
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  padding: 10px;
+  text-align: center;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  width: 90px;
+  height: 130px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centra il contenuto all'interno della carta */
+  align-items: center; /* Centra il contenuto all'interno della carta */
+}
+
+/* Centra le carte all'interno del contenitore */
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Mantiene il contenuto centrato orizzontalmente */
+  
+ justify-content: center; /* Mantiene il contenuto centrato verticalmente */
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  align-content: center;
+  
+}
+
+
+
+/* Colori delle carte basati sulla rarità */
+.card.common {
+  border-color: #a0a0a0;
+  background: linear-gradient(135deg, #f0f0f0, #d9d9d9);
+}
+
+.card.rare {
+  border-color: #4990e2;
+  background: linear-gradient(135deg, #e5f4ff, #cce0f5);
+}
+
+.card.Epic {
+  border-color: #a152e5;
+  background: linear-gradient(135deg, #f3e1ff, #d6c4f0);
+}
+
+.card.Legendary {
+  border-color: #e5c242;
+  background: linear-gradient(135deg, #fff4cc, #fce5a1);
+}
+
+/* Animazione di spostamento */
+@keyframes move-to-inventory {
+  from {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: scale(0.5) translateY(200px);
+    opacity: 0;
+  }
+}
+
+.card.moving {
+  animation: move-to-inventory 0.5s ease-out forwards;
+}
+
+/* Stile per le carte selezionate */
+.card.selected {
+  border: 2px solid red;
+  background-color: rgba(255, 0, 0, 0.2);
+}
+
+/* Popup a schermo intero */
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  transition: opacity 0.3s ease;
+}
+
+.popup.hidden {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.popup-content {
+  background: white;
+  width: 90%;
+  height: 90%;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.3);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.close-btn {
+  align-self: flex-end;
+  background-color: #943DDF;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.close-btn:hover {
+  background-color: #D3A8E7;
+}
+
+.delete-btn {
+  margin-top: 10px;
+  padding: 10px 15px;
+  background: #FF4444;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.delete-btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+/* Punti vita e difesa con testo ancora più piccolo */
+/* Stile per HP e Defense con testo più piccolo */
+/* Stile per HP e Defense affiancati */
+/* Stile per HP e Defense affiancati all'interno della carta */
+.card-hp-defense {
+  position: absolute;
+  bottom: 0px; /* Posiziona le informazioni in basso */
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  gap: 10px; /* Spazio tra HP e Defense */
+  font-size: 0.7rem; /* Testo più piccolo */
+  font-weight: bold;
+  color: #7943A3; /* Colore per il testo */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Ombra per contrasto */
+  z-index: 3; /* Z-index per portare sopra l'immagine */
+}
+
+.card-hp-defense .card-hp {
+  color: #e74c3c; /* Colore rosso per HP */
+}
+
+.card-hp-defense .card-defense {
+  color: #3498db; /* Colore blu per Defense */
+}
+
+/* Contenitore immagine (rimane dietro) */
+.card-image {
+  position: absolute; /* Posizionamento assoluto */
+  top: 0; /* Agganciato al bordo superiore */
+  left: 0; /* Agganciato al bordo sinistro */
+  width: 100%; /* Larghezza completa */
+  height: 100%; /* Altezza completa */
+  object-fit: cover; /* Adatta l'immagine al contenitore senza deformarla */
+  border-radius: 5px; /* Mantieni gli angoli arrotondati */
+  z-index: 2; /* Manda l'immagine dietro gli altri contenuti */
+}
+
+/* Contenitore immagine */
+/* Contenitore immagine */
+.card.selected {
+  transform: scale(1.5); /* Ingrandisce la carta */
+  transition: transform 0.3s ease; /* Animazione fluida */
+  z-index: 5;
+}
+
+.card.selected .card-image {
+  display: none; /* Nasconde l'immagine */
+  align-content: center;
+}
+/* Barra dei pulsanti */
+.bottom-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: linear-gradient(135deg, #943DDF, #2575fc);
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+}
+
+.bottom-bar button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: transform 0.3s, color 0.3s;
+}
+
+.bottom-bar button:hover {
+  transform: scale(1.2);
+  color: #D3A8E7;
+}
+
+.bottom-bar button:focus {
+  outline: none;
+}
