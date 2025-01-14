@@ -94,7 +94,7 @@ body {
 
 
 
-/* Colori delle carte basati sulla rarità */
+/* Colori delle ncarte basati sulla rarità */
 .card.common {
   border-color: #a0a0a0;
   background: linear-gradient(135deg, #f0f0f0, #d9d9d9);
