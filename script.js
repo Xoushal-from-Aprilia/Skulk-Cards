@@ -5,35 +5,35 @@ const cards = [
     rarity: "legendary",
     hp: 100,
     defense: 50,
-    image: "path/to/drago-di-fuoco.jpg",
+    image: "/card-images/SKULK_20250114_233303_0000.png",
   },
   {
-    name: "Stregone Oscuro",
+    name: "Volpe Verdastra",
     rarity: "epic",
     hp: 80,
     defense: 40,
-    image: "path/to/stregone-oscuro.jpg",
+    image: "/card-images/SKULK_20250114_231924_0000.png",
   },
   {
     name: "Guerriero Oscuro",
     rarity: "Epic",
     hp: 60,
     defense: 30,
-    image: "/Progetto senza titolo_20250114_185639_0000.png",
+    image: "/card-images/SKULK_20250114_232110_0000.png",
   },
   {
     name: "Folletto Magico",
     rarity: "common",
     hp: 40,
     defense: 20,
-    image: "path/to/folletto-magico.jpg",
+    image: "/card-images/SKULK_20250114_233212_0000.png",
   },
   {
     name: "Cavaliere Ombra",
     rarity: "common",
     hp: 50,
     defense: 25,
-    image: "path/to/cavaliere-ombra.jpg",
+    image: "/card-images/SKULK_20250114_233111_0000.png",
   },
 ];
 
@@ -128,6 +128,8 @@ function addToInventoryWithAnimation(cardElement, card) {
 // Funzione per selezionare/deselezionare una carta
 function toggleCardSelection(cardElement) {
   cardElement.classList.toggle("selected");
+  
+  saveInventoryToCache();
 
   // Abilitare/disabilitare il pulsante "Elimina Carte"
   const deleteButton = document.getElementById("delete-selected");
@@ -193,7 +195,9 @@ function addToInventoryWithAnimation(cardElement, card) {
     const newCardElement = createCardElement(card);
     inventoryContainer.appendChild(newCardElement);
 
-    // Mostra un messaggio se sono state aggiunte 2 carte
+saveInventoryToCache();
+
+    // Mostra un messaggio se sono state aggiunte 3 carte
     if (cardsAddedToInventory === 3) {
       alert("Hai raggiunto il limite di 3 carte aggiunte per questo pacchetto!");
     }
@@ -245,3 +249,30 @@ function openInventory() {
 function goHome() {
   window.location.href = '/'; // Modifica con il link alla tua homepage
 }
+
+// Salva l'inventario nella cache
+function saveInventoryToCache() {
+  localStorage.setItem("inventory", JSON.stringify(inventory));
+}
+
+// Carica l'inventario dalla cache
+function loadInventoryFromCache() {
+  const savedInventory = localStorage.getItem("inventory");
+  if (savedInventory) {
+    inventory = JSON.parse(savedInventory);
+  } else {
+    inventory = []; // Se non ci sono dati, inizia con un inventario vuoto
+  }
+}
+
+// Caricare l'inventario all'avvio
+window.addEventListener("DOMContentLoaded", () => {
+  loadInventoryFromCache();
+
+  // Aggiungere le carte caricate al contenitore dell'inventario
+  const inventoryContainer = document.getElementById("inventory");
+  inventory.forEach((card) => {
+    const cardElement = createCardElement(card);
+    inventoryContainer.appendChild(cardElement);
+  });
+});

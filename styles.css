@@ -185,7 +185,8 @@ body {
 }
 
 .delete-btn {
-  margin-top: 10px;
+  bottom: 900px;
+ margin-bottom: 40px;
   padding: 10px 15px;
   background: #FF4444;
   color: white;
