@@ -300,3 +300,4 @@ window.onload = function() {
         content.style.opacity = '1'; // Fai apparire il contenuto
     }, 500); // Tempo per completare la transizione
 };
+
