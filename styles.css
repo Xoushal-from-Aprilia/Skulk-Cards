@@ -9,6 +9,11 @@ body {
   min-height: 100vh;
   background: linear-gradient(135deg, #6a11cb, #2575fc);
   color: white;
+  background-image: url('/background/SKULK_20250116_083205_0000.png'); /* Percorso dell'immagine */
+    background-size: cover; /* Adatta l'immagine all'intero schermo */
+    background-position: center; /* Centra l'immagine */
+    background-repeat: no-repeat; /* Evita la ripetizione */
+    height: 100vh; /* Altezza al 100% della viewport */
 }
 
 /* Layout wrapper */
@@ -19,16 +24,35 @@ body {
   padding: 10px 20px;
   font-size: 1rem;
   color: white;
-  background: #2575fc;
+  width: 150px;
+  height: 50px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   transition: background 0.3s;
+  background-image: url('/background/1737014342695.png'); /* Percorso dell'immagine */
+    background-size: cover; /* Adatta l'immagine al pulsante */
+    background-position: center; /* Centra l'immagine */
+     /* Non ripetere l'immagine */
 }
 
-.button:hover {
-  background: #6a11cb;
+.button2 {
+  padding: 10px 20px;
+  font-size: 1rem;
+  color: white;
+  width: 150px;
+  height: 50px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+  background-image: url('/background/1737015395424.png'); /* Percorso dell'immagine */
+    background-size: cover; /* Adatta l'immagine al pulsante */
+    background-position: center; /* Centra l'immagine */
+     /* Non ripetere l'immagine */
 }
+
+
 
 /* Contenitori */
 .pack-container {
@@ -85,9 +109,9 @@ body {
   align-items: center; /* Mantiene il contenuto centrato orizzontalmente */
   
  justify-content: center; /* Mantiene il contenuto centrato verticalmente */
-  background: rgba(0, 0, 0, 0.6);
+  background: #f6f6f6;
   border-radius: 15px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  color: #f6f6f6;
   align-content: center;
   
 }
@@ -95,12 +119,12 @@ body {
 
 
 /* Colori delle ncarte basati sulla rarità */
-.card.common {
+.card.Common {
   border-color: #a0a0a0;
   background: linear-gradient(135deg, #f0f0f0, #d9d9d9);
 }
 
-.card.rare {
+.card.Rare {
   border-color: #4990e2;
   background: linear-gradient(135deg, #e5f4ff, #cce0f5);
 }
@@ -282,4 +306,46 @@ body {
 
 .bottom-bar button:focus {
   outline: none;
+}
+
+/* Loader */
+#loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.9); /* Sfondo bianco semitrasparente */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 9999; /* Sovrasta tutto */
+}
+
+/* Spinner animato */
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #ccc;
+    border-top: 5px solid #943DDF; /* Colore primario */
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+/* Testo del loader */
+#loader p {
+    margin-top: 15px;
+    font-size: 1.2rem;
+    color: #943DDF;
+}
+
+/* Animazione del caricamento */
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }

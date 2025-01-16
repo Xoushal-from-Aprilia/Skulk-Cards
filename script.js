@@ -2,14 +2,14 @@
 const cards = [
   {
     name: "Drago di Fuoco",
-    rarity: "legendary",
+    rarity: "Legendary",
     hp: 100,
     defense: 50,
     image: "/card-images/SKULK_20250114_233303_0000.png",
   },
   {
     name: "Volpe Verdastra",
-    rarity: "epic",
+    rarity: "Epic",
     hp: 80,
     defense: 40,
     image: "/card-images/SKULK_20250114_231924_0000.png",
@@ -35,6 +35,13 @@ const cards = [
     defense: 25,
     image: "/card-images/SKULK_20250114_233111_0000.png",
   },
+  {
+    name: "Fucile D'assalto",
+    rarity: "Rare",
+    hp: 10,
+    defense: 5,
+    image: "/card-images/SKULK_20250116_081459_0000.png",
+  },
 ];
 
 // Inventario
@@ -54,7 +61,8 @@ function createCardElement(card) {
       <img src="${card.image}" alt="${card.name}" class="card-image">
       <div class="card-info">
         <h3>${card.name}</h3>
-        <p>HP: ${card.hp} | DEF: ${card.defense}</p>
+        <p>HP: ${card.hp}</p>
+        <p>ATK: ${card.defense}</p>
         <p>Rarità: ${card.rarity}</p>
       </div>
     </div>
@@ -276,3 +284,19 @@ window.addEventListener("DOMContentLoaded", () => {
     inventoryContainer.appendChild(cardElement);
   });
 });
+
+// Aspetta che tutti gli elementi della pagina siano caricati
+window.onload = function() {
+    // Nascondi il loader con un effetto di transizione
+    const loader = document.getElementById('loader');
+    const content = document.querySelector('.content');
+    
+    loader.style.opacity = '0'; // Fai scomparire il loader
+    loader.style.transition = 'opacity 0.5s ease-in-out';
+
+    setTimeout(() => {
+        loader.style.display = 'none'; // Nascondi completamente il loader
+        content.style.display = 'block'; // Mostra il contenuto della pagina
+        content.style.opacity = '1'; // Fai apparire il contenuto
+    }, 500); // Tempo per completare la transizione
+};

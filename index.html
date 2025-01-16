@@ -10,11 +10,11 @@
   <div class="wrapper">
     <h1>SKULK CARDS</h1>
     <!-- Pulsante per aprire un pacchett.....o -->
-    <button id="open-pack" class="button">Apri un Pacchetto</button>
+    <button id="open-pack" class="button"></button>
     <div class="pack-container" id="pack-container"></div>
     
     <!-- Pulsante per aprire l'inventario -->
-    <button id="open-inventory" class="button">Apri Inventario</button>
+    <button id="open-inventory" class="button2"></button>
   </div>
 
   <!-- Pop-up pjer l'inventario -->
@@ -29,11 +29,21 @@
   </div>
 </div>
 
+
+
+
 <div class="bottom-bar">
   <button id="empty-button" onclick="console.log('Vuoto')">⬜</button>
   <button id="inventory-button" onclick="openInventory()">🎒</button>
   <button id="home-button" onclick="goHome()">🏠</button>
 </div>
+
+<!-- Loader -->
+    <div id="loader">
+        <div class="spinner"></div>
+        <p>Caricamento...</p>
+    </div>
+
 
   <script src="script.js"></script>
 </body>
