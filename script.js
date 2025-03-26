@@ -290,7 +290,7 @@ window.onload = function() {
     // Nascondi il loader con un effetto di transizione
     const loader = document.getElementById('loader');
     const content = document.querySelector('.content');
-    
+
     loader.style.opacity = '0'; // Fai scomparire il loader
     loader.style.transition = 'opacity 0.5s ease-in-out';
 
@@ -298,6 +298,23 @@ window.onload = function() {
         loader.style.display = 'none'; // Nascondi completamente il loader
         content.style.display = 'block'; // Mostra il contenuto della pagina
         content.style.opacity = '1'; // Fai apparire il contenuto
+        
+        // Avvia l'audio dopo il caricamento
+        playAudio();
     }, 500); // Tempo per completare la transizione
 };
 
+// Funzione per avviare l'audio
+function playAudio() {
+    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    const audioElement = new Audio("/sounds/Arnor(chosic.com).mp3");
+    const track = audioContext.createMediaElementSource(audioElement);
+
+    track.connect(audioContext.destination);
+
+    // Sblocca il contesto audio e avvia la riproduzione
+    audioContext.resume().then(() => {
+        audioElement.loop = true; // Ripeti la traccia all'infinito
+        audioElement.play().catch(error => console.log("Autoplay bloccato:", error));
+    }).catch(error => console.log("Errore nell'attivazione dell'audio:", error));
+}
