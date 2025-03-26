@@ -15,6 +15,20 @@ const cards = [
     image: "/card-images/SKULK_20250114_231924_0000.png",
   },
   {
+    name: "Il Simulatore",
+    rarity: "Epic",
+    hp: 180,
+    defense: 70,
+    image: "/card-images/SKULK_20250326_122917_0000.png",
+  },
+  {
+    name: "Leone Dell'Abak",
+    rarity: "Legendary",
+    hp: 280,
+    defense: 80,
+    image: "/card-images/SKULK_20250326_123210_0000.png",
+  },
+  {
     name: "Guerriero Oscuro",
     rarity: "Epic",
     hp: 60,
